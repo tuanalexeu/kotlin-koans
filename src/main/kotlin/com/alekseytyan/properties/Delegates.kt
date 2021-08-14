@@ -1,6 +1,5 @@
 package com.alekseytyan.properties
 
-import com.alekseytyan.convertions.util.MyDate
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
@@ -13,10 +12,10 @@ class EffectiveDate<R> : ReadWriteProperty<R, MyDate> {
     var timeInMillis: Long? = null
 
     override fun getValue(thisRef: R, property: KProperty<*>): MyDate {
-        TODO()
+        return timeInMillis!!.toDate()
     }
 
     override fun setValue(thisRef: R, property: KProperty<*>, value: MyDate) {
-        TODO()
+        timeInMillis = value.toMillis()
     }
 }
